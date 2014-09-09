@@ -65,12 +65,13 @@ function onDeviceReady() {
 }
 
 function onSuccess(acceleration) {
-    //$("#message").append('Acceleration X: ' + acceleration.x + '<br />' +
-    //    'Acceleration Y: ' + acceleration.y + '<br />' +
-    //    'Acceleration Z: ' + acceleration.z + '<br />' +
-    //    'Timestamp: ' + acceleration.timestamp + '<br />');
 
-    $("#message").append("Success");
+    var strMsg = '<p>Acceleration X: ' + acceleration.x + '<br />' +
+        'Acceleration Y: ' + acceleration.y + '<br />' +
+        'Acceleration Z: ' + acceleration.z + '<br />' +
+        'Timestamp: ' + acceleration.timestamp + '</p>';
+
+    $("#message").append(strMsg)
 
     alert('Acceleration X: ' + acceleration.x + '\n' +
           'Acceleration Y: ' + acceleration.y + '\n' +
