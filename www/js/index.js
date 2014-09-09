@@ -65,15 +65,15 @@ function onDeviceReady() {
 }
 
 function onSuccess(acceleration) {
-    $("#message").append('Acceleration X: ' + acceleration.x + '<br />' +
-        'Acceleration Y: ' + acceleration.y + '<br />' +
-        'Acceleration Z: ' + acceleration.z + '<br />' +
-        'Timestamp: ' + acceleration.timestamp + '<br />');
+    //$("#message").append('Acceleration X: ' + acceleration.x + '<br />' +
+    //    'Acceleration Y: ' + acceleration.y + '<br />' +
+    //    'Acceleration Z: ' + acceleration.z + '<br />' +
+    //    'Timestamp: ' + acceleration.timestamp + '<br />');
 
-    //alert('Acceleration X: ' + acceleration.x + '\n' +
-    //      'Acceleration Y: ' + acceleration.y + '\n' +
-    //      'Acceleration Z: ' + acceleration.z + '\n' +
-    //      'Timestamp: ' + acceleration.timestamp + '\n');
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: ' + acceleration.timestamp + '\n');
 };
 
 function onError() {
