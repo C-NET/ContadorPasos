@@ -70,6 +70,8 @@ function onSuccess(acceleration) {
     //    'Acceleration Z: ' + acceleration.z + '<br />' +
     //    'Timestamp: ' + acceleration.timestamp + '<br />');
 
+    $("#message").append("Success");
+
     alert('Acceleration X: ' + acceleration.x + '\n' +
           'Acceleration Y: ' + acceleration.y + '\n' +
           'Acceleration Z: ' + acceleration.z + '\n' +
