@@ -76,21 +76,21 @@ function onSuccess(acceleration) {
 
     $("#message").html(strMsg);
 
-    //if (firstTime) {
-    //    lastx = acceleration.x;
-    //    lasty = acceleration.y;
-    //    lastz = acceleration.z;
-    //    firstTime = false;
-    //    return;
-    //}
-    //else {
-    //    if (stepMade(acceleration.x, acceleration.y, acceleration.z))
-    //        $("#steps").html(steps++);
+    if (firstTime) {
+        lastx = acceleration.x;
+        lasty = acceleration.y;
+        lastz = acceleration.z;
+        firstTime = false;
+        return;
+    }
+    else {
+        if (stepMade(acceleration.x, acceleration.y, acceleration.z))
+            $("#steps").html(steps++);
 
-    //    lastx = acceleration.x;
-    //    lasty = acceleration.y;
-    //    lastz = acceleration.z;
-    //}
+        lastx = acceleration.x;
+        lasty = acceleration.y;
+        lastz = acceleration.z;
+    }
 
     //alert('Acceleration X: ' + acceleration.x + '\n' +
     //      'Acceleration Y: ' + acceleration.y + '\n' +
@@ -103,7 +103,7 @@ function onError() {
 };
 
 function stepMade(x, y, z) {
-    if (lastz - z > 10)
+    if (lastz - z > 4)
         return true;
     else
         return false;
