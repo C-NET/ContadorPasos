@@ -54,7 +54,7 @@
 //    }
 //};
 
-var options = { frequency: 3000 };  // Update every 3 seconds
+var options = { frequency: 1000 };  // Update every 1 seconds
 var firstTime = true;
 var lastx = 0, lasty = 0, lastz = 9.81;
 var steps = 0;
@@ -85,7 +85,7 @@ function onSuccess(acceleration) {
     }
     else {
         if (stepMade(acceleration.x, acceleration.y, acceleration.z))
-            $("#steps").html(steps++);
+            $("#steps").html("Pasos: " + steps++);
 
         lastx = acceleration.x;
         lasty = acceleration.y;
@@ -103,7 +103,7 @@ function onError() {
 };
 
 function stepMade(x, y, z) {
-    if (lastz - z > 4)
+    if (lasty - y > 2)
         return true;
     else
         return false;
