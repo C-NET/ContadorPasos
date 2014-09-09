@@ -55,6 +55,9 @@
 //};
 
 var options = { frequency: 3000 };  // Update every 3 seconds
+var firstTime = true;
+var lastx = 0, lasty = 0, lastz = 9.81;
+var steps = 0;
 
 (function () {
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -71,15 +74,38 @@ function onSuccess(acceleration) {
         'Acceleration Z: ' + acceleration.z + '<br />' +
         'Timestamp: ' + acceleration.timestamp + '</p>';
 
-    $("#message").append(strMsg)
+    $("#message").html(strMsg);
 
-    alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: ' + acceleration.timestamp + '\n');
+    //if (firstTime) {
+    //    lastx = acceleration.x;
+    //    lasty = acceleration.y;
+    //    lastz = acceleration.z;
+    //    firstTime = false;
+    //    return;
+    //}
+    //else {
+    //    if (stepMade(acceleration.x, acceleration.y, acceleration.z))
+    //        $("#steps").html(steps++);
+
+    //    lastx = acceleration.x;
+    //    lasty = acceleration.y;
+    //    lastz = acceleration.z;
+    //}
+
+    //alert('Acceleration X: ' + acceleration.x + '\n' +
+    //      'Acceleration Y: ' + acceleration.y + '\n' +
+    //      'Acceleration Z: ' + acceleration.z + '\n' +
+    //      'Timestamp: ' + acceleration.timestamp + '\n');
 };
 
 function onError() {
     alert('onError!');
+};
+
+function stepMade(x, y, z) {
+    if (lastz - z > 10)
+        return true;
+    else
+        return false;
 };
 
