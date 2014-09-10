@@ -53,13 +53,17 @@ var firstTime = true;
 var lastx = 0, lasty = 0, lastz = 9.81;
 var steps = 0;
 
+// Anonymous Closures
 (function () {
     document.addEventListener('deviceready', onDeviceReady, false);
 })();
 
 function onDeviceReady() {
-    var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    //var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    var watchID = navigator.geolocation.watchPosition(onSuccessGeolocation, onErrorGeolocation, { timeout: 30000 });
 }
+
+//Acceleration
 
 function onSuccess(acceleration) {
 
@@ -102,4 +106,28 @@ function stepMade(x, y, z) {
     else
         return false;
 };
+
+//Geolocation
+
+// onSuccess Callback
+// This method accepts a Position object, which contains the
+// current GPS coordinates
+//
+function onSuccessGeolocation(position) {
+    alert('Latitude: ' + position.coords.latitude + '\n' +
+          'Longitude: ' + position.coords.longitude + '\n' +
+          'Altitude: ' + position.coords.altitude + '\n' +
+          'Accuracy: ' + position.coords.accuracy + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+          'Heading: ' + position.coords.heading + '\n' +
+          'Speed: ' + position.coords.speed + '\n' +
+          'Timestamp: ' + position.timestamp + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onErrorGeolocation(error) {
+    alert('code: ' + error.code + '\n' +
+          'message: ' + error.message + '\n');
+}
 
